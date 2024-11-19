@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dewan Tarikul Mannan - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .profile-info {
+            text-align: center;
+        }
+
+        .profile-info h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .profile-info p {
+            font-size: 1.4rem;
+            color: #ecf0f1;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+            background: var(--light-bg);
+        }
+
+        nav a.active {
+            color: var(--secondary-color);
+            background: var(--light-bg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-child(even) {
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .experience-card .company {
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .experience-card .duration {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: var(--light-bg);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            margin-top: 0.5rem;
+        }
+
+        .experience-card ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Certifications & Achievements */
+        .cert-achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-color);
+        }
+
+        .references {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .reference-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .profile-info p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-info">
+                <h1>Dewan Tarikul Mannan</h1>
+                <p>Business Intelligence Professional</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                Intermediate Business Intelligence Professional looking for a challenging role in a dynamic workplace to utilize prior experiences of Data and business analytics, aiming to make a positive impact within the organization.
+            </p>
+            <div style="margin-top: 2rem; text-align: center;">
+                <h3 style="color: var(--secondary-color);">Languages</h3>
+                <p style="margin-top: 1rem;">
+                    <span class="skill-tag">Bangla (Native)</span>
+                    <span class="skill-tag">English (Proficient in speaking & writing)</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="experience-card">
+                <h3>Senior Analyst, Data</h3>
+                <div class="company">Gain Theory Singapore</div>
+                <div class="duration">Jan 2023 - Present</div>
+                <ul>
+                    <li>Gathering and processing campaign marketing data on a monthly and quarterly basis</li>
+                    <li>Streamlining the ETL process, resulting in a 60% reduction in data delivery timelines</li>
+                    <li>Ensured automated data collection, processing and exception handling</li>
+                    <li>Crafting a comprehensive QA dashboard to minimize errors</li>
+                    <li>Managing stakeholders from APAC and North America</li>
+                    <li>Delivering quarterly business report on campaign performance analysis</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Data Engineer, L1</h3>
+                <div class="company">VML Studios Dhaka (Formerly Wunderman Thompson)</div>
+                <div class="duration">Jan 2023 - Present</div>
+                <ul>
+                    <li>Processing Campaign marketing data to analyze performance</li>
+                    <li>Maintaining & optimizing Dashboard on an internal visualization portal</li>
+                    <li>Preparing business documentation and contributed in reaching out potential future clients</li>
+                    <li>Provide insight reports to help the marketing team take future decisions</li>
+                    <li>Worked with an overseas team from varied region</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Product Support Specialist</h3>
+                <div class="company">Wunderman Thompson Studios Dhaka</div>
+                <div class="duration">Jun 2021 - Dec 2022</div>
+                <ul>
+                    <li>Analyzed product requirements and communicating effectively with global teams</li>
+                    <li>Handled user generated tickets and provided first level technical support</li>
+                    <li>Documented workflows and procedures to streamline project management</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Operations & Marketing Executive</h3>
+                <div class="company">Battery low Interactive Ltd.</div>
+                <div class="duration">Jan 2020 - Jun 2021</div>
+                <ul>
+                    <li>Managed operations for various Immersive, IoT, web, and mobile app projects</li>
+                    <li>Communicated with clients including Bangladesh Army, Robi, PWD Bangladesh, and BAT</li>
+                    <li>Led the Marketing team in planning and executing different marketing campaigns</li>
+                    <li>Studied cases of brands and clients</li>
+                    <li>Researched future opportunities and reached out to prospects</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Business Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Business Analytics</span>
+                        <span class="skill-tag">Business Growth & Operations</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Data Governance</span>
+                        <span class="skill-tag">Dashboard Design & Development</span>
+                        <span class="skill-tag">Reporting</span>
+                        <span class="skill-tag">Client Communication</span>
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Google BigQuery</span>
+                        <span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">PowerBI</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Fabric</span>
+                        <span class="skill-tag">CloverDX</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Tensorflow</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Excel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="certifications">
+    <div class="container">
+        <h2 class="section-title">Certifications & Achievements</h2>
+        <div class="cert-achievement-grid">
+            <!-- Certification Card 1 -->
+            <div class="cert-card">
+                <h3>dbt Fundamentals</h3>
+                <p>
+                    <strong>Platform:</strong> dbt Labs<br>
+                    <strong>Date Completed:</strong> September 2024<br>
+                    <strong>Description:</strong> Completed a comprehensive course on dbt, focusing on modern data transformation techniques and best practices.
+                </p>
+            </div>
+            <!-- Certification Card 2 -->
+            <div class="cert-card">
+                <h3>Google Data Analytics Certificate</h3>
+                <p>
+                    <strong>Platform:</strong> Coursera<br>
+                    <strong>Date Completed:</strong> March 2023<br>
+                    <strong>Description:</strong> Mastered foundational data analytics skills including data cleaning, visualization, and analysis using industry-standard tools like SQL and Tableau.
+                </p>
+            </div>
+            <!-- Certification Card 3 -->
+            <div class="cert-card">
+                <h3>Snowflake Hands-On Essentials</h3>
+                <p>
+                    <strong>Platform:</strong> Snowflake University<br>
+                    <strong>Date Completed:</strong> May 2024<br>
+                    <strong>Description:</strong> Gained hands-on experience in cloud data warehousing, understanding Snowflake architecture, and working with datasets for business solutions.
+                </p>
+            </div>
+            <!-- Certification Card 4 -->
+            <div class="cert-card">
+                <h3>Power BI Data Analyst Associate</h3>
+                <p>
+                    <strong>Platform:</strong> Microsoft<br>
+                    <strong>Date Completed:</strong> January 2024<br>
+                    <strong>Description:</strong> Certified in developing and managing data models, creating meaningful dashboards, and deriving actionable insights using Power BI.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="experience-card">
+                <h3>BSc Engineering in CSE</h3>
+                <div class="company">Islamic University of Technology</div>
+                <div class="duration">2017 - 2021</div>
+            </div>
+
+            <div class="experience-card">
+                <h3>Higher Secondary Education (Science)</h3>
+                <div class="company">Adamjee Cantonment College</div>
+                <div class="duration">2014 - 2016</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <div class="contact-links">
+                    <a href="mailto:tarikul.mannan@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        tarikul.mannan@gmail.com
+                    </a>
+                    <a href="tel:+8801521256909">
+                        <i class="fas fa-phone"></i>
+                        +880 1521 256 909
+                    </a>
+                    <a href="https://linkedin.com/in/dewan-tarikul-mannan/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn Profile
+                    </a>
+                    <a href="https://medium.com/@dewantarikulmannan" target="_blank">
+                        <i class="fab fa-medium"></i>
+                        Medium Blog
+                    </a>
+                </div>
+
+                <div class="references">
+                    <div class="reference-card">
+                        <h3>Reference 1</h3>
+                        <p><strong>Minhaz us Salakeen Fahme</strong></p>
+                        <p>CEO, Battery Low Interactive</p>
+                        <p>Contact: +8801521112329</p>
+                        <p>Email: fahme.batterylowinteractive@gmail.com</p>
+                    </div>
+                    <div class="reference-card">
+                        <h3>Reference 2</h3>
+                        <p><strong>Ifaz Ahmed Aflan</strong></p>
+                        <p>Lead IoT Devops, Grameenphone Ltd</p>
+                        <p>Contact: +8801833184012</p>
+                        <p>Email: ifaz.ahmed.63@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: section.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation items based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navHeight = 60;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - navHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll reveal animation
+        document.querySelectorAll('.experience-card, .skill-category, .cert-card, .reference-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+        });
+
+        function reveal() {
+            const elements = document.querySelectorAll('.experience-card, .skill-category, .cert-card, .reference-card');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+    </script>
+</body>
+</html>
